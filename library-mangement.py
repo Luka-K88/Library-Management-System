@@ -24,24 +24,23 @@ class Patron:
         self.books_borrowed = books_borrowed
 
     # Create a method to manage a list of borrowed books
-    def bookManger(self, book1, book2, book3):
-        interaction = input("Enter 'check out book' to check a book out, or 'view books' to see checked out books: ").lower()
+    def bookManager(self):
+        interaction = input("Enter 'check out book' to check a book out, or 'view books' to see books: ").lower()
         if interaction == "check out book":
             check_out = input("Enter book title to check out: ")
             self.books_borrowed.append(check_out)
         elif interaction == "view books":
-            print(book3)
+            print()
         else:
-            print(book1, book2, "are available")
+            print("are available")
             # Handle invalid inputs
             print("Invalid request")
 
 # Create a class called Library
 class Library:
     # Create a way to view or add books to the library
-    def bookList(self):
-        books = []
-        self.books = books
+    def bookList(self, book1, book2, book3):
+        books = [book1, book2, book3]
         task = input("Enter 'view' to see books, or 'add' to add a book: ").lower()
         if task == "view":
             print(books)
@@ -55,12 +54,12 @@ class Library:
     # Create a way to add patrons and track books
     def patronList(self):
         patrons = []
-        interaction = input("Enter 'register' to register a new patron, or 'track books' to track patron books").lower()
+        interaction = input("Enter 'register' to register a new patron or 'exit' to exit program: ").lower()
         if interaction == "register":
             patron_name = input("Enter patron name: ")
             patrons.append(patron_name)
-        elif interaction == "track books":
-            print(self.books)
+        elif interaction == "exit":
+            print("Thank you")
         else:
             # Handle invalid inputs
             print("Invalid request")
@@ -69,8 +68,8 @@ nonfiction = Book("Python Learning", "Meet Patel", "2004", "Not Available")
 nonfiction.bookDisplay()
 
 user = Patron("Ethan", "00", "Python Learning")
-user.bookManger()
+user.bookManager()
 
 LukasLibrary = Library
-LukasLibrary.bookList("Python Learning", "HTML basics", "Master CSS")
+LukasLibrary.bookList("Python Learning", "HTML Mastery", "CSS Basics", "Understanding VMs")
 LukasLibrary.patronList("Ethan")
